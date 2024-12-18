@@ -33,6 +33,7 @@ pipeline {
             
             steps {
                 sh '''
+                    ls -la
                     test -f build/index.html
                     npm test
                 '''
@@ -49,7 +50,7 @@ pipeline {
             }
             steps {
                 sh '''
-                    npm install netlify-cli 
+                    npm install -g netlify-cli 
                     netlify --version
                 '''
             }
