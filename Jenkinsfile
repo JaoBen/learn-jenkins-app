@@ -50,7 +50,7 @@ pipeline {
             steps {
                 sh '''
                     npm install netlify-cli 
-                    netlity --version
+                    netlify --version
                 '''
             }
         }
