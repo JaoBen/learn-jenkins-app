@@ -18,7 +18,6 @@ pipeline {
                 echo "Checking required files..."
                 sh '''
                     test -f index.html || (echo "Missing index.html" && exit 1)
-                    
                     echo "Build check passed."
                 '''
             }
@@ -33,7 +32,7 @@ pipeline {
             }
             steps {
                 echo "Testing quote function load..."
-                
+                sh 'echo "No test implemented yet"'
             }
         }
 
@@ -47,9 +46,8 @@ pipeline {
             steps {
                 echo "Deploying to Netlify..."
                 sh '''
-                    npm install -g netlify-cli
-                    npx netlify deploy --prod --dir=build --auth=nfp_LrGFNrZ4KCrD72A7ifcSDyeZJYAqtBaHf804 --site=netlify-token
-
+                    npm install netlify-cli
+                    npx netlify deploy --prod --dir=build --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
                 '''
             }
         }
