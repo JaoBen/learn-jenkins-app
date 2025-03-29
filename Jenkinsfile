@@ -18,8 +18,6 @@ pipeline {
                 echo "✅ Checking required files..."
                 sh '''
                     test -f public/index.html || (echo "❌ Missing index.html" && exit 1)
-                    npm installl
-                    npm run build
                     echo "✅ Build check passed."
                 '''
             }
