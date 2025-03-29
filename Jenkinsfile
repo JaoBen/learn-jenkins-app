@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        NETLIFY_SITE_ID = 'nfp_mH8RzrncB2cenbTC6dHtP9iTHLAqPpBcc760'
+        NETLIFY_SITE_NAME = 'netlify-token' // 🔧 เปลี่ยนเป็นชื่อ site ที่ตั้งไว้ใน Netlify
         NETLIFY_AUTH_TOKEN = credentials('netlify-token')
     }
 
@@ -15,10 +15,10 @@ pipeline {
                 }
             }
             steps {
-                echo "Checking required files..."
+                echo "✅ Checking required files..."
                 sh '''
-                    test -f index.html || (echo "Missing index.html" && exit 1)
-                    echo "Build check passed."
+                    test -f index.html || (echo "❌ Missing index.html" && exit 1)
+                    echo "✅ Build check passed."
                 '''
             }
         }
@@ -31,8 +31,8 @@ pipeline {
                 }
             }
             steps {
-                echo "Testing quote function load..."
-                sh 'echo "No test implemented yet"'
+                echo "🧪 Testing quote function load..."
+                sh 'echo "⚠️ No test implemented yet"'
             }
         }
 
@@ -44,27 +44,27 @@ pipeline {
                 }
             }
             steps {
-                echo "Deploying to Netlify..."
+                echo "🚀 Deploying to Netlify..."
                 sh '''
-                    npm install netlify-cli
-                    npx netlify deploy --prod --dir=build --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
+                    npm install --no-save netlify-cli
+                    npx netlify deploy --prod --dir=build --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_NAME
                 '''
             }
         }
 
         stage('Post Deploy') {
             steps {
-                echo "Deployment complete! Your app is live."
+                echo "🎉 Deployment complete! Your app is live."
             }
         }
     }
 
     post {
         success {
-            echo "CI/CD pipeline finished successfully."
+            echo "✅ CI/CD pipeline finished successfully."
         }
         failure {
-            echo "Pipeline failed. Check logs for details."
+            echo "❌ Pipeline failed. Check logs for details."
         }
     }
 }
