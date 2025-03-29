@@ -1,0 +1,210 @@
+Started by user benjawan chompootepa
+Obtained Jenkinsfile from git https://github.com/JaoBen/learn-jenkins-app.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/devops
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/devops/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/JaoBen/learn-jenkins-app.git # timeout=10
+Fetching upstream changes from https://github.com/JaoBen/learn-jenkins-app.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.5'
+ > git fetch --tags --force --progress -- https://github.com/JaoBen/learn-jenkins-app.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision c514f6845b6ce0730af9f7f3c335b47c853cb5f6 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f c514f6845b6ce0730af9f7f3c335b47c853cb5f6 # timeout=10
+Commit message: "trhhfhge"
+ > git rev-list --no-walk 94d6f5771296a1aa9459ea7091ee21f9c3a4a5ff # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $NETLIFY_AUTH_TOKEN
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] getContext
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . node:18-slim
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins seems to be running inside container 987922604a27c65ee7486fa76167dabdbd2628161cdb4093ca000e7c800fb5b6
+but /var/jenkins_home/workspace/devops could not be found among []
+but /var/jenkins_home/workspace/devops@tmp could not be found among []
+$ docker run -t -d -u 1000:1000 -w /var/jenkins_home/workspace/devops -v /var/jenkins_home/workspace/devops:/var/jenkins_home/workspace/devops:rw,z -v /var/jenkins_home/workspace/devops@tmp:/var/jenkins_home/workspace/devops@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** node:18-slim cat
+$ docker top 5f842e61e84b3550df4a1ddb7b066aaba21952dd230552b645b4513433e0c9a6 -eo pid,comm
+[Pipeline] {
+[Pipeline] echo
+✅ Checking required files...
+[Pipeline] sh
++ test -f index.html
++ echo ✅ Build check passed.
+✅ Build check passed.
+[Pipeline] }
+$ docker stop --time=1 5f842e61e84b3550df4a1ddb7b066aaba21952dd230552b645b4513433e0c9a6
+$ docker rm -f --volumes 5f842e61e84b3550df4a1ddb7b066aaba21952dd230552b645b4513433e0c9a6
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] getContext
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . node:18-slim
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins seems to be running inside container 987922604a27c65ee7486fa76167dabdbd2628161cdb4093ca000e7c800fb5b6
+but /var/jenkins_home/workspace/devops could not be found among []
+but /var/jenkins_home/workspace/devops@tmp could not be found among []
+$ docker run -t -d -u 1000:1000 -w /var/jenkins_home/workspace/devops -v /var/jenkins_home/workspace/devops:/var/jenkins_home/workspace/devops:rw,z -v /var/jenkins_home/workspace/devops@tmp:/var/jenkins_home/workspace/devops@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** node:18-slim cat
+$ docker top 40dcd231a7df5a79fab7cb39588fb666e0cad08602f4f09833e89163f4cf4df7 -eo pid,comm
+[Pipeline] {
+[Pipeline] echo
+🧪 Testing quote function load...
+[Pipeline] sh
++ echo ⚠️ No test implemented yet
+⚠️ No test implemented yet
+[Pipeline] }
+$ docker stop --time=1 40dcd231a7df5a79fab7cb39588fb666e0cad08602f4f09833e89163f4cf4df7
+$ docker rm -f --volumes 40dcd231a7df5a79fab7cb39588fb666e0cad08602f4f09833e89163f4cf4df7
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy)
+[Pipeline] getContext
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . node:18-slim
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins seems to be running inside container 987922604a27c65ee7486fa76167dabdbd2628161cdb4093ca000e7c800fb5b6
+but /var/jenkins_home/workspace/devops could not be found among []
+but /var/jenkins_home/workspace/devops@tmp could not be found among []
+$ docker run -t -d -u 1000:1000 -w /var/jenkins_home/workspace/devops -v /var/jenkins_home/workspace/devops:/var/jenkins_home/workspace/devops:rw,z -v /var/jenkins_home/workspace/devops@tmp:/var/jenkins_home/workspace/devops@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** node:18-slim cat
+$ docker top 6b87b07edfd93299a85b998de88383c9870de830ce43f0b5b9d655a98ed841c3 -eo pid,comm
+[Pipeline] {
+[Pipeline] echo
+🚀 Deploying to Netlify...
+[Pipeline] sh
++ npm install --no-save netlify-cli
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated npmlog@5.0.1: This package is no longer supported.
+npm warn deprecated gauge@3.0.2: This package is no longer supported.
+npm warn deprecated are-we-there-yet@2.0.0: This package is no longer supported.
+npm warn deprecated glob@8.1.0: Glob versions prior to v9 are no longer supported
+
+changed 1596 packages, and audited 3133 packages in 60s
+
+455 packages are looking for funding
+  run `npm fund` for details
+
+36 vulnerabilities (3 low, 18 moderate, 15 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
++ npx netlify deploy --prod --dir=build --auth=**** --site=5356c5a5-4829-4ea3-bdfe-76f0ddb77052
+Deploy path: /var/jenkins_home/workspace/devops/build
+Deploying to main site URL...
+[33m⠋[39m Uploading blobs to deploy store...
+
+​
+Netlify Build                                                 
+────────────────────────────────────────────────────────────────
+​
+❯ Version
+  @netlify/build 30.0.6
+​
+❯ Flags
+  auth: ****
+  deployId: 67e7b9b32e3bddb7015dcb72
+  dir: build
+  open: false
+  prod: true
+  prodIfUnlocked: false
+  site: 5356c5a5-4829-4ea3-bdfe-76f0ddb77052
+  skipFunctionsCache: false
+​
+❯ Current directory
+  /var/jenkins_home/workspace/devops
+​
+❯ Config file
+  No config file was defined: using default values.
+​
+❯ Context
+  dev
+[33m⠙[39m Finished uploading blobs to deploy store
+[33m⠋[39m Hashing files...
+[33m⠋[39m Looking for a functions cache...
+[33m⠙[39m No cached functions were found
+[33m⠙[39m Finished hashing 
+[33m⠋[39m CDN diffing files...
+[33m⠙[39m CDN requesting 0 files
+[33m⠋[39m Uploading 0 files
+[33m⠙[39m Finished uploading 0 assets
+[33m⠋[39m Waiting for deploy to go live...
+[33m⠙[39m Deploy is live!
+
+Build logs:         https://app.netlify.com/sites/chimerical-torte-7567dc/deploys/67e7b9b32e3bddb7015dcb72
+Function logs:      https://app.netlify.com/sites/chimerical-torte-7567dc/logs/functions
+Edge function Logs: https://app.netlify.com/sites/chimerical-torte-7567dc/logs/edge-functions
+Unique deploy URL:  https://67e7b9b32e3bddb7015dcb72--chimerical-torte-7567dc.netlify.app
+Website URL:        https://chimerical-torte-7567dc.netlify.app
+[Pipeline] }
+$ docker stop --time=1 6b87b07edfd93299a85b998de88383c9870de830ce43f0b5b9d655a98ed841c3
+$ docker rm -f --volumes 6b87b07edfd93299a85b998de88383c9870de830ce43f0b5b9d655a98ed841c3
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Post Deploy)
+[Pipeline] echo
+🎉 Deployment complete! Your app is live.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+✅ CI/CD pipeline finished successfully.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
