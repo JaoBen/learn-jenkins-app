@@ -17,7 +17,9 @@ pipeline {
             steps {
                 echo "✅ Checking required files..."
                 sh '''
-                    test -f index.html || (echo "❌ Missing index.html" && exit 1)
+                    test -f public/index.html || (echo "❌ Missing index.html" && exit 1)
+                    npm installl
+                    npm run build
                     echo "✅ Build check passed."
                 '''
             }
