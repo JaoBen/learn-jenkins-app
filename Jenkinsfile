@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        NETLIFY_SITE_NAME = 'netlify-token' // 🔧 เปลี่ยนเป็นชื่อ site ที่ตั้งไว้ใน Netlify
+        NETLIFY_SITE_NAME = '5356c5a5-4829-4ea3-bdfe-76f0ddb77052' // 🔧 เปลี่ยนเป็นชื่อ site ที่ตั้งไว้ใน Netlify
         NETLIFY_AUTH_TOKEN = credentials('netlify-token')
     }
 
