@@ -17,7 +17,7 @@ pipeline {
             steps {
                 echo "✅ Checking required files..."
                 sh '''
-                    test -f build/index.html || (echo "❌ Missing index.html" && exit 1)
+                    test -f index.html || (echo "❌ Missing index.html" && exit 1)
                     echo "✅ Build check passed."
                 '''
             }
