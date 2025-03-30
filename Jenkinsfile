@@ -46,7 +46,7 @@ pipeline {
             steps {
                 echo "🚀 Deploying to Netlify..."
                 sh '''
-                    npm install --no-save netlify-cli
+                    npm install netlify-cli
                     npx netlify deploy --prod --dir=build --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_NAME
                 '''
             }
